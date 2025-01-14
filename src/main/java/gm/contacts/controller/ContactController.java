@@ -63,6 +63,16 @@ public class ContactController {
         return "redirect:/"; // to Home
     }
 
+    // GET [host/edit/{id}]
+    @GetMapping("/remove/{id}")
+    public String removeContact(@PathVariable(value = "id") int idContact, ModelMap model) {
+        Contact contact = contactService.searchContact(idContact);
+        logger.info("contact to remove: {}", contact);
+        contactService.deleteContact(contact);
+        return "redirect:/";
+    }
+
+
 }
 
 
