@@ -10,7 +10,6 @@ import java.util.List;
 
 @Service
 public class ContactService implements IContactService {
-    Logger logger = LoggerFactory.getLogger(ContactService.class);
     private final IContactRepository contactRepository;
 
     // CONSTRUCTOR
