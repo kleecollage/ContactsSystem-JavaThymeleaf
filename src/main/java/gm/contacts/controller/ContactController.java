@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -26,6 +28,18 @@ public class ContactController {
         // contacts.forEach(contact -> logger.info(contact.toString()));
         model.put("contacts", contacts);
         return "index";
+    }
+
+    @GetMapping("/add")
+    public String showAdd(ModelMap model) {
+        return "add";
+    }
+
+    @PostMapping("/add")
+    public String addContact(@ModelAttribute("contactForm") Contact contact) {
+        logger.info("contact to add: {}", contact);
+        contactService.saveContact(contact);
+        return "redirect:/"; // to Home
     }
 }
 
