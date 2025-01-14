@@ -23,7 +23,7 @@ public class ContactController {
     @GetMapping("/")
     public String init(ModelMap model) {
         List<Contact> contacts = contactService.listContacts();
-        contacts.forEach(contact -> logger.info(contact.toString()));
+        // contacts.forEach(contact -> logger.info(contact.toString()));
         model.put("contacts", contacts);
         return "index";
     }
